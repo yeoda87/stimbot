@@ -29,10 +29,10 @@ module.exports = function (robot) {
 		// value for that entry.
 		if (cards[query]) {
 			// Send the value for the card.
-			// * Note: We'll prefix the value with "> " since Slack will format
-			//   any message starting with ">" as a quote (and it'll look a little
+			// * Note: We'll prefix every bullet point with "> " since Slack will
+			//   then format it to like a quote (and it'll look a little
 			//   fancier). *
-			res.send('> ' + cards[query]);
+			res.send(cards[query].replace(/•/g, '> •'));
 		}
 		// If no entry exists, send the "not found" message.
 		else {

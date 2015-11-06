@@ -105,9 +105,37 @@ module.exports = function (robot) {
 		
 		//Order and Chaos
 		
+		'gagarin deep space': '• The Runner can decline to pay the 1 credit to access a card.',
+		'glenn station': '• If Glenn Station is forfeited, any card hosted on it is trashed.\n• Glenn Station can only host a card through its click ability.',
+		'mark yale': '• If the Corp spends an agenda counter for Mark Yale’s paid ability, he or she also gains 1 credit from his conditional ability.',
+		'wormhole': '• The subroutine that resolves is not considered to be on Wormhole (e.g. when the Corp uses Wormhole with cards like Data Raven or Viktor 2.0, the power counters are placed on those cards and not Wormhole).',
+		'housekeeping': '• If the Runner has 1 card in his or her grip and installs it, Housekeeping has no effect and does not prevent the install. (Only forced trashing through damage can result in a flatline.)',
+		'the twins': '• The Runner cannot jack out before encountering the ice again.',
+		'edward kim': '• If the first operation Edward Kim accesses is in Archives, then he cannot trash another operation with his ability that turn.',
+		"i've had worse": '• The Runner trashes all cards from the damage before drawing for I’ve Had Worse.\n• I’ve Had Worse cannot prevent the Runner from being flatlined if the Runner takes more damage than the number of cards in his or her grip.',
+		'itinerant protesters': '• The Corp does not lose the game if he or she has a negative hand size.',
+		'eater': '• If the Runner access Archives after using Eater, all cards are turned faceup but no individual cards are accessed.',
+
+//San San Cycle
+
+		'enhanced vision': '• The revealed card is no longer revealed during the access phase; it immediately returns to its unrevealed state after the Corp shows the card to the Runner.',
+		'turntable': '• Agendas switched with Turntable keep any hosted counters or cards on them, but their text is not active.',
+		'allele repression': '• Allele Repression can add itself to HQ as part of the resolution of its effect.',
+		'film critic': '• After Film Critic’s ‘when accessed’ ability resolves, any remaining ‘when accessed’ abilities are non-resolvable.\n• An agenda hosted on Film Critic is not considered to be stolen. An agenda added to the score area from Film Critic is not considered to be stolen.\n• The Runner cannot voluntarily trash an agenda hosted on Film Critic, even if the Runner accesses another agenda.\n• Film Critic can only host an agenda through its ‘when accessed’ ability.',
+		'casting call': '• Agendas installed faceup with Casting Call are not active (unless those agendas can be installed faceup through their own abilities).\n• If the agenda hosting Casting Call is uninstalled, Casting Call is trashed.',
+		'worlds plaza': '• Worlds Plaza may be accessed and trashed, thereby trashing all of its hosted cards, before the cards hosted on it are accessed.',
 		
+//Data and Destiny
+
+		'archangel': '• When encountering an Archangel during access, the Runner follows timing step 3 of a run, ignoring the portions about approaching ice/the server.\n• If Archangel is encountered while accessed and it is moved from its position as determined when accessed (e.g., from R&D being shuffled during the encounter or from Archangel being trashed from HQ by Utopia Shard during the encounter), then the encounter immediately ends and any currently open paid ability windows close.\n• Archangel is not considered to be rezzed during its encounter, and cards that interact with rezzed cards, e.g., Datasucker, cannot affect it.',
+		'ad blitz': '• The Corp must both install and rez any advertisements chosen by Ad Blitz.',
+		'the all-seeing i': '• The Corp does not have to have a bad publicity in order to play The All-Seeing I.',
+		'endless hunger': '• Endless Hunger can only break subroutines that read exactly “:subroutine: End the run.” It cannot break subroutines that use the words “end the run” as only part of its effect, e.g. on Tsurugi or Pop-up Window.',
+		'hunting grounds': '• The prevent ability on Hunting Grounds is optional; because it can only be triggered “once per turn” it is the Runner’s choice as to when to trigger it.',
+		'brain chip': '• If the Runner has negative :agenda points:, Brain Chip does not lower his or her hand size or :mu:: these cannot be increased by a negative number.',
+		'always be running': '• Programs that make a run, such as Sneakdoor Beta, Keyhole, etc., fulfill the requirement to make a run on Always Be Running'
 		
-		
+
 	};
 	
 	// Define the FAQ handler function.

@@ -133,7 +133,7 @@ module.exports = function (robot) {
 		'endless hunger': '• Endless Hunger can only break subroutines that read exactly “:subroutine: End the run.” It cannot break subroutines that use the words “end the run” as only part of its effect, e.g. on Tsurugi or Pop-up Window.',
 		'hunting grounds': '• The prevent ability on Hunting Grounds is optional; because it can only be triggered “once per turn” it is the Runner’s choice as to when to trigger it.',
 		'brain chip': '• If the Runner has negative :agenda points:, Brain Chip does not lower his or her hand size or :mu:: these cannot be increased by a negative number.',
-		'always be running': '• Programs that make a run, such as Sneakdoor Beta, Keyhole, etc., fulfill the requirement to make a run on Always Be Running'
+		'always be running': '• Programs that make a run, such as Sneakdoor Beta, Keyhole, etc., fulfill the requirement to make a run on Always Be Running',
 		
 //Mumbad Cycle
 

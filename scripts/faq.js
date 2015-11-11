@@ -24,7 +24,7 @@ module.exports = function (robot) {
 		'net shield': '•	 Net Shield can prevent a single point of net damage each turn. It does not prevent all net damage from a single source.\n•	 Multiple Net Shields cannot prevent more damage.',
 		"aesop's pawnshop": '•	 Aesop’s Pawnshop can only trash a single card each turn.',
 		'aggressive secrertary': '•	 The programs are trashed at the same time.\n•	 The Corporation cannot choose to trash the same program more than once.',
-		'chum': '•	 If the Runner jacks out immediately after encountering a Chum and not breaking its subroutine, the Runner does not take any damage.\n•	 Chum deals its net damage the first time either of the following occur during an encounter with the next piece of ice:\n 1) a subroutine resolves\n 2) the encounter/run ends (includes bypassing) before all subroutines are broken',
+		'chum': '•	 If the Runner jacks out immediately after encountering a Chum and not breaking its subroutine, the Runner does not take any damage.\n•	 Chum deals its net damage the first time either of the following occur during an encounter with the next piece of ice:\n 1) step 3.1 of a run closes and there is an unbroken subroutine on the piece of ice.\n2) step 3.1 of a run was skipped or did not resolve because the encounter/run ends (if 3.1 does not happen, no subroutines can be broken). This applies even if the piece of ice has 0 subroutines.',
 		'tollbooth': '•	 If the Runner cannot pay 3:credits: when encountering Tollbooth, then the run ends without the Runner paying any credits.\n•	 The Runner must pay 3:credits: if he is able to do so, even by spending temporary credits (such as bad publicity credits)',
 		'red herrings': '•	 If the Runner accesses an agenda from R&D and does not pay the additional cost to steal it, he does not reveal it to the Corp.',
 		'aggressive negotiation': '•	 Aggressive Negotiation can be played if the Corp scores an agenda during step 1.1 of his draw phase.',
@@ -44,7 +44,7 @@ module.exports = function (robot) {
 		'personal workshop': '•	 The Runner may use the first ability on Personal Workshop to host a program or a piece of hardware on it. Cards hosted by this ability are not installed, and therefore are inactive.\n•	 The Runner can pay to remove a power counter from a card hosted on Personal Workshop as a paid ability. A program installed from Personal Workshop follows all the normal install rules; you must trash already installed programs to make room for the new one, if necessary.\n•	 When there are no power counters on a program or a piece of hardware that has a play restriction on it that cannot be met (such as a Parasite with no rezzed ice to be hosted on or a console when there is already a console installed), that program or piece of hardware is trashed instead of being installed.\n•	 If Personal Workshop is uninstalled, all cards hosted on it are trashed and all counters on those cards are removed.',
 		'sunset': '•	 When resolving Sunset, the ice must be rearranged in such a way that the Runner knows which pieces of ice moved where. The Corp cannot conceal the rearrangement of the ice.',
 		'oversight ai': '• Playing Oversight AI does not give Haas-Bioroid: Engineering the Future 1:credit: for an install.\n• Oversight AI is treated as a condition counter, and is no longer an operation, while it is active.\n• Oversight AI is trashed to the Archives if the host ice is uninstalled.',
-		'false lead': '•	 If False Lead is forfeited and the Runner cannot lose 2 clicks, then he loses no clicks.\n•	 The Corp can forfeit 2 copies of False Lead at 1.1 to force the Runner to lose 4 clicks. The turn immediately advances to the Runner’s discard phase.',
+		'false lead': '•	 If False Lead is forfeited and the Runner cannot lose 2 clicks, then he loses no clicks.\n•	The Corp can forfeit 2 copies of False Lead at 1.1 to force the Runner to lose 4 clicks. The turn immediately advances to the Runner’s discard phase.',
 		'disrupter': '•	 Disrupter cannot be used once the Corp has bid during a trace attempt. It must be used when the trace is being initiated, and it prevents the entire trace before re-initiating it with a base trace strength of 0.',
 		'andromeda': '•	 When the Runner mulligans with Andromeda, he draws another starting hand of 9 cards.',
 		'midori': '•	 Ice that is swapped is installed, but the install cost of the ice being swapped does not have to be paid.\n•	 If the Runner exposes an ice with Snitch, Midori can still swap the ice unless the Runner jacks out with Snitch.\n•	 Midori must already be rezzed before the run in order to use her on the first piece of ice protecting the server.\n•	 Ice installed with Midori can be rezzed with the Amazon Industrial Zone.',
@@ -78,13 +78,13 @@ module.exports = function (robot) {
 		
 //Honor and Profit
 		
-		'tennin institute': '•	 The Tennin Institute can place advancement tokens on itself.\n•	 The Tennin Institute can place advancement tokens on Runner cards.',
+		'tennin institute': '•	 The Tennin Institute cannot place advancement tokens on itself, since ID cards are not installed.\n•	 The Tennin Institute can place advancement tokens on Runner cards.',
 		'tori hanzō': '•	 The first net damage can be prevented/avoided before Tori Hanzō’s replacement ability resolves.\n•	 If the first point of net damage is prevented by another effect or replaced with Tori Hanzō’s own effect, Tori Hanzō cannot trigger for the remainder of the run.',
 		'ian stirling': '•	 If Iain Stirling has a negative :agenda: point total, then he has fewer :agenda: points than a Corp with 0 or more :agenda: points.',
 		'security testing': '•	 If Security Testing is uninstalled after a server is chosen, its ability cannot replace accessing cards if the first run on the chosen server is successful; the ability is no longer active since the card is no longer active.',
 		'q-coherence chip': '•	 Q-Coherence Chip is trashed whenever a program is trashed, even if the program was not installed.',
 		'overmind': '•	 Overmind is installed, and its MU counts against your memory limit, when it gains power counters.',
-		
+
 //Lunar Cycle
 		
 		'taurus': '• If the Corp’s trace strength is 5 or greater, Taurus trashes a piece of hardware even if the trace was unsuccessful. This also applies to Gemini, Sagittarius, and Virgo.',
@@ -135,6 +135,9 @@ module.exports = function (robot) {
 		'brain chip': '• If the Runner has negative :agenda points:, Brain Chip does not lower his or her hand size or :mu:: these cannot be increased by a negative number.',
 		'always be running': '• Programs that make a run, such as Sneakdoor Beta, Keyhole, etc., fulfill the requirement to make a run on Always Be Running'
 		
+//Mumbad Cycle
+
+	'test': 'waking up steve',
 
 	};
 	
@@ -147,7 +150,6 @@ module.exports = function (robot) {
 		query = query.trim();
 		// Convert the query to lowercase.
 		query = query.toLowerCase();
-		
 		// If an entry for `query` exists in the `cards` object, then output the
 		// value for that entry.
 		if (cards[query]) {

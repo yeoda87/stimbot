@@ -1,3 +1,10 @@
+# Description:
+#   Tools for interacting with the NetrunnerDB API.
+#
+# Commands:
+#   [card name] - search for a card with that name in the NetrunnerDB API (braces necessary)
+#   !jank (corp|runner) - Choose an identity and three random cards. Break the meta!
+
 Fuse = require 'fuse.js'
 
 FACTIONS = {
@@ -115,7 +122,17 @@ ABBREVIATIONS = {
 	'tldr': 'TL;DR',
 	'sportsball': 'Team Sponsorship',
 	'sports ball': 'Team Sponsorship',
-	'sports': 'Team Sponsorship'
+	'sports': 'Team Sponsorship',
+	'crfluency': 'Blue Sun',
+	'dodgepong': 'Broadcast Square',
+	'cheese potato': 'Data Leak Reversal',
+	'cheese potatos': 'Data Leak Reversal',
+	'cheese potatoes': 'Data Leak Reversal',
+	'cycy': 'Cyber-Cipher',
+	'cy cy': 'Cyber-Cipher',
+	'cy-cy': 'Cyber-Cipher',
+	'expose': 'Exposé',
+	'sneakysly': 'Stimhack'
 }
 
 formatCard = (card) ->
@@ -240,3 +257,42 @@ module.exports = (robot) ->
 				channel: res.message.room
 		else
 			res.send "No card result found for \"" + res.match[1] + "\"."
+
+	robot.hear /^!jank\s?(runner|corp)?$/i, (res) ->
+		side = res.match[1]
+		cards = robot.brain.get('cards')
+
+		if !side?
+			randomside = Math.floor(Math.random() * 2)
+			if randomside is 0
+				side = "runner"
+			else
+				side = "corp"
+		else
+			side = side.toLowerCase()
+
+		sidecards = cards.filter((card) -> 
+			return card.side_code == side
+		)
+		identities = sidecards.filter((card) ->
+			return card.type_code == "identity" && card.cyclenumber != 0
+		)
+		sideNonIDCards = sidecards.filter((card) ->
+			return card.type_code != "identity" && card.cyclenumber != 0
+		)
+
+		randomIdentity = Math.floor(Math.random() * identities.length)
+		identityCard = identities[randomIdentity]
+
+		numberOfCards = 3
+		cardString = identityCard.title
+
+		for num in [1..numberOfCards]
+			do (num) ->
+				randomCard = {}
+				while true
+					randomCard = sideNonIDCards[Math.floor(Math.random() * sideNonIDCards.length)]
+					break if randomCard.type_code != "agenda" || (randomCard.type_code == "agenda" && (randomCard.faction_code == identityCard.faction_code || randomCard.faction_code == "neutral"))
+				cardString += " + " + randomCard.title
+
+		res.send cardString
